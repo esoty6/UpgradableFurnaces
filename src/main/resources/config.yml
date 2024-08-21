@@ -1,0 +1,58 @@
+autosave: 5
+
+upgradeBlocks:
+  efficiency:
+    "DIAMOND_BLOCK": 6
+    "REDSTONE_BLOCK": 1.75
+    "QUARTZ_BLOCK": 0.7
+
+  fortune:
+    "GOLD_BLOCK": 3
+    "EMERALD_BLOCK": 4
+    "COPPER_BLOCK": 1.75
+    "QUARTZ_BLOCK": 0.5
+
+  fuelEfficiency:
+    "COAL_BLOCK": 3
+    "COPPER_BLOCK": 1.25
+    "NETHERRACK": 0.1
+    "NETHER_BRICKS": 0.4
+
+furnaceUpgrades:
+  globalLevelMultiplierEnabled: false
+  globalLevelMultiplier: 3.0
+  globalBaseNextLevel: 2.0
+  # "step" or "sigmoid"
+  modifierCalculationMethod: "sigmoid"
+  efficiency:
+    enabled: true
+    levelUpMultiplier: 1.05
+    maxLevel: 6
+
+  fortune:
+    enabled: true
+    levelUpMultiplier: 1.1
+    maxLevel: 6
+
+  fuelEfficiency:
+    enabled: true
+    levelUpMultiplier: 1.3
+    maxLevel: 4
+
+  upgradeLevels:
+    efficiency:
+      2:
+        modifier: 5
+        fuelPenalty: 12
+      1:
+        modifier: 5
+        fuelPenalty: 12
+      5:
+        modifier: 78
+        fuelPenalty: 92
+    fortune:
+      6:
+        modifier: 95
+    fuelEfficiency:
+      1:
+        modifier: 5
