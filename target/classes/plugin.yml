@@ -1,4 +1,5 @@
 name: UpgradableFurnaces
+api: 1.21.1
 api-version: 1.21.1
 main: com.github.esoty6.upgradablefurnaces.UpgradableFurnacesPlugin
 author: esoty6
