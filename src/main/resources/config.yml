@@ -1,58 +1,100 @@
 autosave: 5
 
+# Blocks that will upgrade furnaces with given upgrade
 upgradeBlocks:
   efficiency:
-    "DIAMOND_BLOCK": 6
+    # "BLOCK_NAME": experience
+    "DIAMOND_BLOCK": 6.0
     "REDSTONE_BLOCK": 1.75
     "QUARTZ_BLOCK": 0.7
 
   fortune:
-    "GOLD_BLOCK": 3
-    "EMERALD_BLOCK": 4
+    "GOLD_BLOCK": 3.0
+    "EMERALD_BLOCK": 4.0
     "COPPER_BLOCK": 1.75
     "QUARTZ_BLOCK": 0.5
 
   fuelEfficiency:
-    "COAL_BLOCK": 3
+    "COAL_BLOCK": 3.0
     "COPPER_BLOCK": 1.25
     "NETHERRACK": 0.1
     "NETHER_BRICKS": 0.4
 
 furnaceUpgrades:
+  # This will enable global level multiplier and override
+  # per upgrade levelUpModifer values with globalLevelMultiplier
   globalLevelMultiplierEnabled: false
+
+  # Value which will multiply globalBaseNextLevel on first time upgrade
+  # and then every next level experience requirement
   globalLevelMultiplier: 3.0
+
+  # Base experience requirement to reach level 1 of upgrade
   globalBaseNextLevel: 2.0
+
+  # Bonus calculation methods - See more in https://github.com/esoty6/UpgradableFurnaces/blob/main/README.md
   # "step" or "sigmoid"
   modifierCalculationMethod: "sigmoid"
+
   efficiency:
+    # Makes upgrade obtainable via upgrade blocks
     enabled: true
-    levelUpMultiplier: 1.05
+
+    # The value that multiplies the global base of the next level, and then
+    # once the level is reached, it multiplies the previous experience requirements
+    # E.g.:
+    # globalBaseNextLevel: 2.0
+    # levelUpMultiplier: 1.05
+    # in order to get upgrade to level 1 it needs 2.0 experience
+    # then, on level 1 it needs 2.0 * 1.05 = 2.1 experience to get level 2 etc.
+    levelUpMultiplier: 1.1
+
+    # Max upgrade level
+    # Works for "sigmoid" method only
     maxLevel: 6
 
   fortune:
     enabled: true
-    levelUpMultiplier: 1.1
-    maxLevel: 6
+    levelUpMultiplier: 2.25
+    maxLevel: 3
 
   fuelEfficiency:
     enabled: true
-    levelUpMultiplier: 1.3
-    maxLevel: 4
+    levelUpMultiplier: 1.5
+    maxLevel: 3
 
+  # Upgrades steps
+  # Works for "step" method only
   upgradeLevels:
     efficiency:
+      # Efficiency upgrade steps
+      1:
+        # Smelting speed increase in %
+        modifier: 5
+
+        # Fuel usage increase in %
+        fuelPenalty: 12
       2:
-        modifier: 5
-        fuelPenalty: 12
-      1:
-        modifier: 5
-        fuelPenalty: 12
+        modifier: 17
+        fuelPenalty: 15
+
       5:
-        modifier: 78
-        fuelPenalty: 92
+        modifier: 50
+        fuelPenalty: 45
+
     fortune:
+      # Fortune upgrade steps
+      # Tier also specifies up to how much extra items you can get
+      # Here, for instance, you have fortune max level 6, and modifier 95%
+      # So, you have 95% of getting 1-7 items from smelting
       6:
+        # Chance to get more items
         modifier: 95
+
     fuelEfficiency:
+      # Fuel efficiency steps
       1:
+        # Fuel burning time increase in %
         modifier: 5
+      2:
+        modifier: 15
